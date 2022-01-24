@@ -8,7 +8,8 @@ const uploadController = require("./controllers/uploadController");
 
 app.set("view engine", "ejs");
 
-app.post("/upload", uploads.single("image"), uploadController);
+app.get("/upload", uploadController.GET);
+app.post("/upload", uploads.single("image"), uploadController.POST);
 
 app.listen(port, () => {
   console.log(`https://localhost:${port}`);
