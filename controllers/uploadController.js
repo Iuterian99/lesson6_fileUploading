@@ -6,7 +6,7 @@ module.exports = {
       console.log(err);
     }
   },
-  POST: (req, res) => {
+  POST: (_, res) => {
     try {
       res.redirect("/upload");
     } catch (err) {

@@ -3,7 +3,17 @@ const app = express();
 const port = process.env.port || 4000;
 const ejs = require("ejs");
 const multer = require("multer");
-const uploads = multer({ dest: "uploads/" });
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(file, file.originalname);
+  },
+});
+
+const uploads = multer({ storage: storage });
 const uploadController = require("./controllers/uploadController");
 
 app.set("view engine", "ejs");
